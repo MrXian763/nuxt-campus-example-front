@@ -1,3 +1,4 @@
+<!-- 全局容器 -->
 <template>
   <div class="app-container">
     <el-container>
@@ -8,7 +9,7 @@
       </el-header>
       <!-- 分割线 -->
       <!-- 主要区域容器 -->
-      <el-main style="padding: 0px; margin-top: 0px">
+      <el-main style="padding: 0px; margin-top: 0px" class="main">
         <div class="main-container">
           <nuxt />
         </div>
@@ -30,13 +31,23 @@ export default {
   },
 };
 </script>
+
 <style>
+.app-container {
+  height: 100%;
+  width: 100vw;
+  flex-direction: column;
+}
 .el-container {
   min-height: 100vh;
+  width: 100vw;
   background-color: #f5f5f5;
 }
 .el-main {
   overflow: visible !important;
+}
+.main-container {
+  width: 100vw;
 }
 /* .el-message {
   z-index: 99999999 !important;

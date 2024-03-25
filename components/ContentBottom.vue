@@ -1,9 +1,7 @@
+<!-- 内容底部功能键 -->
 <template>
   <div class="ContentBottom">
-    <div
-      class="content-bootom-svg woo-box-flex woo-box-alignCenter"
-      style="margin: 10px 15px 15px 0px"
-    >
+    <div class="content-bootom-svg woo-box-flex woo-box-alignCenter" style="margin: 10px 15px 15px 0px">
       <!-- 分享链接 -->
       <div class="woo-box-item-flex">
         <div
@@ -12,7 +10,7 @@
         >
           <div class="woo-pop-wrap">
             <img width="20" height="20" src="~/assets/images/fenxiang.png" />
-            <span>分享链接</span>
+            <span>分享</span>
           </div>
         </div>
       </div>
@@ -44,6 +42,7 @@
     </div>
     <!-- 评论列表 -->
     <div v-if="showComment">
+      <!-- 评论列表子组件 -->
       <Comment :contentObj="contentObj"></Comment>
     </div>
   </div>

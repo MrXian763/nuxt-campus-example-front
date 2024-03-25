@@ -1,3 +1,4 @@
+<!-- 顶部组件 -->
 <template>
   <div class="header-container">
     <div class="wrapper">
@@ -6,75 +7,42 @@
         <el-col :xs="4" :sm="6">
           <div style="text-align: right; margin-top: 10px">
             <router-link :to="{ name: 'index' }">
-              <svg
-                t="1638268177277"
-                class="icon"
-                viewBox="0 0 1024 1024"
-                version="1.1"
-                xmlns="http://www.w3.org/2000/svg"
-                p-id="4526"
-                width="35"
-                height="35"
-              >
-                <path
-                  d="M155.101867 553.233067a17.066667 17.066667 0 1 1-29.0816-17.885867l221.866666-360.5504a17.066667 17.066667 0 0 1 29.0816 17.885867l-221.866666 360.5504z"
-                  p-id="4527"
-                  data-spm-anchor-id="a313x.7781069.0.i11"
-                  class="selected"
-                  fill="#8a8a8a"
-                ></path>
-                <path
-                  d="M288.221867 836.164267a17.066667 17.066667 0 1 1-34.133334 0V335.189333a17.066667 17.066667 0 0 1 34.133334 0v500.974934zM824.661333 287.6416a17.066667 17.066667 0 0 1 0 34.133333H374.784a17.066667 17.066667 0 0 1 0-34.133333h449.877333zM759.978667 401.373867a17.066667 17.066667 0 0 1 0 34.133333H443.733333a17.066667 17.066667 0 1 1 0-34.133333h316.245334zM759.978667 512.512a17.066667 17.066667 0 0 1 0 34.133333H443.733333a17.066667 17.066667 0 1 1 0-34.133333h316.245334zM618.222933 245.691733a17.066667 17.066667 0 1 1-32.768 9.557334l-23.176533-79.2576a17.066667 17.066667 0 1 1 32.768-9.557334l23.210667 79.2576zM506.538667 660.3776a79.36 79.36 0 0 0 0 158.72h190.600533a79.36 79.36 0 0 0 0-158.72H506.538667z m0-34.133333h190.600533a113.493333 113.493333 0 1 1 0 226.986666H506.538667a113.493333 113.493333 0 1 1 0-226.986666z"
-                  p-id="4528"
-                  data-spm-anchor-id="a313x.7781069.0.i10"
-                  class="selected"
-                  fill="#8a8a8a"
-                ></path>
-                <path
-                  d="M512 1015.9104C233.710933 1015.9104 8.0896 790.289067 8.0896 512 8.0896 233.710933 233.710933 8.0896 512 8.0896c278.289067 0 503.9104 225.621333 503.9104 503.9104 0 278.289067-225.621333 503.9104-503.9104 503.9104z m0-34.133333c259.447467 0 469.777067-210.3296 469.777067-469.777067S771.413333 42.222933 512 42.222933 42.222933 252.586667 42.222933 512 252.586667 981.777067 512 981.777067z"
-                  p-id="4529"
-                  data-spm-anchor-id="a313x.7781069.0.i9"
-                  class=""
-                  fill="#707070"
-                ></path>
-              </svg>
+              <svg t="1710667270137" class="icon" viewBox="0 0 1335 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="9765" width="32" height="32"><path d="M1277.088512 342.634172l0 213.00761 51.350798 58.778878-98.582587 85.454538-90.091616-85.454538 54.188013-60.327003L1193.95312 377.87742C902.672178 496.698728 823.810243 533.621441 759.223161 562.456936c-64.599243 28.833063-111.125681 28.687128-175.199559 4.800038-64.065365-23.879793-354.550962-134.007037-505.99234-205.719384-101.065911-47.854444-107.568521-78.182122 1.734192-118.789689C222.405749 189.132681 443.66597 103.27439 568.638429 56.418383c73.984065-29.619894 113.093368-45.78217 180.99925-12.010432 121.249906 49.537559 383.795075 152.39117 521.552635 208.658754C1391.123159 304.854092 1310.495413 321.883463 1277.088512 342.634172L1277.088512 342.634172 1277.088512 342.634172zM773.269383 650.818009c70.439066-28.762528 165.414632-76.309293 268.972379-120.201608l0 352.419098c0 0-133.938934 140.964477-369.387664 140.964477C419.293647 1023.999977 282.327783 883.035499 282.327783 883.035499L282.327783 554.093657c79.930907 32.212669 169.683225 59.930547 278.308556 96.724351C627.5827 674.374313 712.534979 682.517473 773.269383 650.818009L773.269383 650.818009 773.269383 650.818009zM773.269383 650.818009" fill="#252535" p-id="9766"></path></svg>
             </router-link>
           </div>
         </el-col>
 
+        <!-- logo -->
         <el-col :xs="15" :sm="13">
           <div style="display: inline-block; text-align: center">
             <img height="46" src="~assets/images/bt.png" />
           </div>
         </el-col>
 
+        <!-- 头像 -->
         <el-col :xs="5" :sm="5">
           <div style="font-weight: bold; text-align: left; padding-top: 10px">
             <router-link :to="{ name: 'userlogin' }">
+              <!-- 没登录显示 登录｜注册 -->
               <div v-if="userName == '' && this.$route.path != '/userlogin'">
-                <span class="sad">登录/注册</span>
+                <span class="sad">登录｜注册</span>
               </div>
             </router-link>
-            <el-dropdown
-              v-if="userName != ''"
-              style="margin-top: 0px; margin-left: 4px"
-            >
+
+            <!-- 已经登录 -->
+            <el-dropdown v-if="userName != ''" style="margin-top: 0px; margin-left: 4px">
               <span class="el-dropdown-link">
-                <el-avatar
-                  v-if="uImages != ''"
-                  shape="circle"
-                  :size="35"
-                  :src="handleCampusUrl(uImages)"
-                ></el-avatar>
-                <i class="el-icon-caret-bottom" />
+                <!-- 头像 -->
+                <el-avatar v-if="uImages != ''" shape="circle" :size="35" :src="handleCampusUrl(uImages)"></el-avatar>
+                <i class="el-icon-menu" />
               </span>
+
+              <!-- 下拉列表 -->
               <el-dropdown-menu class="user-name-wrapper" slot="dropdown">
                 <span @click="profile()">
-                  <el-dropdown-item
-                    command="/User/edit"
-                    style="font-weight: bolder"
-                  >
-                    个人
+                  <!-- 个人中心 -->
+                  <el-dropdown-item command="/User/edit" style="font-weight: bolder">
+                    <!-- 图标 -->
                     <svg
                       t="1638274029049"
                       class="icon"
@@ -97,13 +65,14 @@
                         data-spm-anchor-id="a313x.7781069.0.i0"
                         class=""
                       ></path>
-                    </svg> </el-dropdown-item
-                ></span>
+                    </svg>
+                    个人中心
+                  </el-dropdown-item>
+                </span>
+                <!-- 发布管理 -->
                 <span @click="routingmanagement()">
-                  <el-dropdown-item
-                    command="/user/management"
-                    style="font-weight: bolder"
-                    >管理
+                  <el-dropdown-item command="/user/management" style="font-weight: bolder">
+                    <!-- 图标 -->
                     <svg
                       t="1638267182271"
                       class="icon"
@@ -136,13 +105,14 @@
                         class=""
                         fill="#1afa29"
                       ></path>
-                    </svg> </el-dropdown-item
-                ></span>
+                    </svg>
+                    &nbsp;发布管理
+                  </el-dropdown-item>
+                </span>
+                <!-- 发布内容 -->
                 <span @click="publish()">
-                  <el-dropdown-item
-                    command="/User/release"
-                    style="font-weight: bolder"
-                    >发布
+                  <el-dropdown-item command="/User/release" style="font-weight: bolder">
+                    <!-- 图标 -->
                     <svg
                       t="1638265991107"
                       class="icon"
@@ -168,14 +138,14 @@
                         class=""
                         fill="#90EDCD"
                       ></path>
-                    </svg> </el-dropdown-item
-                ></span>
+                    </svg>
+                    &nbsp; 发布内容
+                  </el-dropdown-item>
+                </span>
+                <!-- 退出登录 -->
                 <span @click="exit()">
-                  <el-dropdown-item
-                    command="/logout"
-                    divided
-                    style="font-weight: bolder"
-                    >退出
+                  <el-dropdown-item command="/logout" divided style="font-weight: bolder">
+                    <!-- 图标 -->
                     <svg
                       t="1638276918283"
                       class="icon"
@@ -200,8 +170,11 @@
                         p-id="7992"
                         data-spm-anchor-id="a313x.7781069.0.i36"
                         class=""
-                      ></path></svg></el-dropdown-item
-                ></span>
+                      ></path>
+                    </svg>
+                    退出登录
+                  </el-dropdown-item>
+                </span>
               </el-dropdown-menu>
             </el-dropdown>
           </div>
@@ -278,7 +251,7 @@ export default {
   top: 0;
   width: 100%;
   z-index: 1;
-  background-color: #fff;
+  background-color:aliceblue;
 }
 a {
   color: #919191;

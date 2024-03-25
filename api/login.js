@@ -24,7 +24,7 @@ export function register(data) {
   })
 }
 
-//绑定邮箱验证
+// 绑定邮箱验证
 export function bindMail(data) {
   return request({
     url: '/campus/bindMail',
@@ -33,7 +33,7 @@ export function bindMail(data) {
   })
 }
 
-//绑定邮箱验证
+// 绑定邮箱验证
 export function emailValidate(uuid) {
   return request({
     url: '/campus/email-validate',
@@ -52,7 +52,7 @@ export function checkUserNameUnique(userName) {
   })
 }
 
-//校验用户名称是否唯一
+//校验邮箱用户名称是否唯一
 export function checkEmailUnique(email) {
   return request({
     url: '/emailUnique',
@@ -73,6 +73,7 @@ export function logout() {
 export function getCodeImg() {
   return request({
     url: '/captchaImage',
+    // 不需要 token
     headers: {
       isToken: false
     },

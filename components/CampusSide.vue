@@ -1,3 +1,4 @@
+<!-- 热度榜组件 -->
 <template>
   <div class="campus-side">
     <div class="campus-side-main">
@@ -6,18 +7,16 @@
       </div>
       <div class="woo-divider-main woo-divider-x"><!----></div>
       <div class="campus-side-card">
-        <div
-          v-for="(item, keys) in simpleHotList"
-          :key="keys"
-          class="campus-side-panel"
-          style="padding: 0 18px"
-        >
-          <el-link :href="'c/' + item.contentId" target="_blank"
-            ><div class="con woo-box-flex woo-box-alignCenter">
+        <div v-for="(item, keys) in simpleHotList" :key="keys" class="campus-side-panel" style="padding: 0 18px">
+          <!-- 点击跳转新标签页显示内容 -->
+          <el-link :href="'c/' + item.contentId" target="_blank">
+            <div class="con woo-box-flex woo-box-alignCenter">
               <div class="side-rank-num">{{ keys + 1 }}</div>
+              <!-- 内容信息 -->
               <div class="side-f12" style="margin-right: 10px; color: #333">
                 {{ item.content }}
               </div>
+              <!-- 点赞数 -->
               <div class="side-f12" style="color: #939393">
                 {{ item.loveCount }}
               </div>
@@ -51,21 +50,24 @@ export default {
   //方法集合
   methods: {
     getSimpleHotContent() {
+      // 向后端发送请求获取数据
       touristApi
         .getSimpleHotContent()
         .then((response) => {
-          this.simpleHotList = response.data;
+          this.simpleHotList = response.data; // 记录数据
         })
         .catch();
     },
   },
 };
 </script>
+
 <style>
 .campus-side {
-  background-color: #fff;
+  background-color: #ffffff;
   margin: 20px 0 0 0;
-  width: 280px;
+  width: 290px;
+  height: 100%;
   margin-left: 8px;
 }
 .campus-side-main {
@@ -88,6 +90,7 @@ export default {
   align-self: center;
   font-size: 14px;
   line-height: 18px;
+  color: #ff2026;
 }
 .side-rank-num {
   font-size: 16px;

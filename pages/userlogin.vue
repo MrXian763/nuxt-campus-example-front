@@ -1,95 +1,60 @@
+<!-- 用户登录 -->
 <template>
   <div class="ss">
     <div class="grid-content bg-purple-dark">
       <div class="login">
         <!--账号登录 #start -->
-        <el-form
-          ref="loginForm"
-          :model="loginForm"
-          :rules="loginRules"
-          class="login-form"
-        >
-          <h3 class="title">登录账户</h3>
+        <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form">
+          <!-- 弹框标题 -->
+          <h3 class="title">登录</h3>
+          <!-- 账号 -->
           <el-form-item prop="username">
-            <el-input
-              v-model="loginForm.username"
-              type="text"
-              auto-complete="off"
-              placeholder="账号"
-            >
-              <svg-icon
-                slot="prefix"
-                icon-class="user"
-                class="el-input__icon input-icon"
-              />
+            <!-- 账号输入框 -->
+            <el-input v-model="loginForm.username" type="text" auto-complete="off" placeholder="账号">
+              <!-- 图标 -->
+              <svg-icon slot="prefix" icon-class="user" class="el-input__icon input-icon"/>
             </el-input>
           </el-form-item>
+
+          <!-- 密码 -->
           <el-form-item prop="password">
-            <el-input
-              v-model="loginForm.password"
-              type="password"
-              auto-complete="off"
-              placeholder="密码"
-              @keyup.enter.native="handleLogin"
-            >
-              <svg-icon
-                slot="prefix"
-                icon-class="password"
-                class="el-input__icon input-icon"
-              />
+            <el-input v-model="loginForm.password" type="password" auto-complete="off" placeholder="密码" @keyup.enter.native="handleLogin">
+              <svg-icon slot="prefix" icon-class="password" class="el-input__icon input-icon"/>
             </el-input>
           </el-form-item>
+
+          <!-- 验证码 -->
           <el-form-item prop="code" v-if="captchaEnabled">
-            <el-input
-              v-model="loginForm.code"
-              auto-complete="off"
-              placeholder="验证码"
-              style="width: 63%"
-              @keyup.enter.native="handleLogin"
-            >
-              <svg-icon
-                slot="prefix"
-                icon-class="validCode"
-                class="el-input__icon input-icon"
-              />
+            <el-input v-model="loginForm.code" auto-complete="off" placeholder="验证码" style="width: 63%" @keyup.enter.native="handleLogin">
+              <svg-icon slot="prefix" icon-class="validCode" class="el-input__icon input-icon"/>
             </el-input>
             <div class="login-code">
               <img :src="codeUrl" @click="getCode" class="login-code-img" />
             </div>
           </el-form-item>
+
           <el-form-item>
-            <router-link
-              :to="{ path: 'resetPwd' }"
-              style="float: left"
-              class="router-link-active"
-            >
-              <el-link type="danger">忘记密码？</el-link>
+            <router-link :to="{ path: 'resetPwd' }" style="float: left" class="router-link-active">
+              <el-link type="danger">忘记密码</el-link>
             </router-link>
 
-            <span
+            <!-- <span
               style="float: right"
               class="router-link-active"
               @click="openWxamp"
             >
               <el-link type="danger">使用微信登录</el-link>
-            </span>
+            </span> -->
           </el-form-item>
 
           <el-form-item style="width: 100%">
-            <el-button
-              :loading="loading"
-              size="medium"
-              type="primary"
-              style="width: 100%"
-              @click.native.prevent="handleLogin"
-            >
+            <!-- 登录按钮 -->
+            <el-button :loading="loading" size="medium" type="primary" style="width: 100%" @click.native.prevent="handleLogin">
               <span v-if="!loading">登 录</span>
               <span v-else>登 录 中...</span>
             </el-button>
             <div style="float: right">
-              <router-link class="link-type" :to="'/register'"
-                >立即注册</router-link
-              >
+              <router-link class="link-type" :to="'/register'">注册</router-link>
             </div>
           </el-form-item>
         </el-form>
@@ -108,6 +73,7 @@ import { getToken, setToken, removeToken } from "@/utils/auth";
 export default {
   data() {
     return {
+      // 登录表单数据
       loginForm: {
         username: "",
         password: "",
@@ -115,14 +81,15 @@ export default {
         uuid: "",
       },
       codeUrl: "",
+      // 登录数据校验规则
       loginRules: {
         username: [
-          { required: true, trigger: "blur", message: "请输入您的账号" },
+          { required: true, trigger: "blur", message: "账号不能为空" },
         ],
         password: [
-          { required: true, trigger: "blur", message: "请输入您的密码" },
+          { required: true, trigger: "blur", message: "密码不能为空" },
         ],
-        code: [{ required: true, trigger: "change", message: "请输入验证码" }],
+        code: [{ required: true, trigger: "change", message: "验证码必填" }],
       },
       loading: false,
       // 验证码开关

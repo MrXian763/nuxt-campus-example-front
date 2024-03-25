@@ -1,3 +1,4 @@
+<!-- 评论子组件 -->
 <template>
   <div class="commen-u" style="margin-top: 5px" v-if="isDel == 0">
     <!-- 评论 -->
@@ -6,11 +7,7 @@
       <div class="comment-item" style="margin-top: 10px">
         <div class="woo-box-flex">
           <!-- 头像 -->
-          <el-avatar
-            shape="circle"
-            :size="40"
-            :src="handleCampusUrl(commentObj.avatar)"
-          ></el-avatar>
+          <el-avatar shape="circle" :size="40" :src="handleCampusUrl(commentObj.avatar)"></el-avatar>
           <!-- 昵称、评论内容、时间 -->
           <div class="woo-box-item-flex" style="margin: -2px 0 0 10px">
             <div>
@@ -22,41 +19,34 @@
                 >
               </span>
               <!-- 是否是作者 -->
-              <span
-                class="comment-item-tag"
-                style="background: rgb(254, 44, 85)"
-                v-if="commentObj.userId == contentObj.userId"
-                ><span>作者</span>
+              <span class="comment-item-tag" style="background: rgb(254, 44, 85)" v-if="commentObj.userId == contentObj.userId">
+                <span>楼主</span>
               </span>
             </div>
 
+            <!-- 评论内容 -->
             <div style="text-align: left; margin-top: 5px">
               {{ commentObj.coContent }}
             </div>
 
-            <div
-              class="comment-info woo-box-flex woo-box-alignCenter woo-box-justifyBetween"
-            >
+            <!-- 评论时间、ip -->
+            <div class="comment-info woo-box-flex woo-box-alignCenter woo-box-justifyBetween">
               <div>
                 <span> {{ handelTimeFormat(commentObj.createTime) }} </span>
                 <span>·{{ commentObj.address }}</span>
               </div>
+
+              <!-- 操作键 -->
               <div class="woo-box-flex" style="margin-right: 20px">
-                <div
-                  class="comment-iconbed woo-box-flex woo-box-alignCenter woo-box-justifyCenter"
-                  @click="delOwnComment(commentObj.commentId)"
-                >
-                  <svg-icon
-                    class="comment-tool-iconbed"
-                    v-if="commentObj.userId == loginUserId"
-                    icon-class="delete"
-                  />
+                <!-- 删除评论 -->
+                <div class="comment-iconbed woo-box-flex woo-box-alignCenter woo-box-justifyCenter" @click="delOwnComment(commentObj.commentId)">
+                  <!-- 图标 -->
+                  <svg-icon class="comment-tool-iconbed" v-if="commentObj.userId == loginUserId" icon-class="delete"/>
                 </div>
 
-                <div
-                  class="comment-iconbed woo-box-flex woo-box-alignCenter woo-box-justifyCenter"
-                  @click="openCommentChild(commentObj.commentId)"
-                >
+                <!-- 回复 -->
+                <div class="comment-iconbed woo-box-flex woo-box-alignCenter woo-box-justifyCenter" @click="openCommentChild(commentObj.commentId)">
+                  <!-- 图标 -->
                   <svg-icon class="comment-tool-iconbed" icon-class="comment" />
                 </div>
               </div>
@@ -69,6 +59,7 @@
     <!-- 评论弹出框 -->
     <el-dialog title="回复" :visible.sync="dialog" width="600px" append-to-body>
       <div class="woo-box-item-flex" style="align-self: center">
+        <!-- 文本输入框 -->
         <el-input
           type="textarea"
           placeholder="发布你的回复"
@@ -79,15 +70,10 @@
         >
         </el-input>
       </div>
+      <!-- 回复按钮 -->
       <div class="woo-box-flex woo-box-alignCenter">
         <div class="woo-box-item-flex" style="align-self: center"></div>
-        <el-button
-          type="primary"
-          round
-          style="margin-top: 15px"
-          :disabled="dialogText.length <= 0"
-          @click="addCommentChild()"
-        >
+        <el-button type="primary" round style="margin-top: 15px" :disabled="dialogText.length <= 0" @click="addCommentChild()">
           回复
         </el-button>
       </div>
@@ -182,6 +168,7 @@ export default {
   },
 };
 </script>
+
 <style>
 .comment-nick {
   font-weight: bolder;

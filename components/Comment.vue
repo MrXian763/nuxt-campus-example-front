@@ -1,3 +1,4 @@
+<!-- 评论列表子组件 -->
 <template>
   <div class="Comment">
     <div style="margin: 15px 20px 0"><!----></div>
@@ -5,21 +6,18 @@
     <!-- 评论框 -->
     <div class="woo-box-flex" style="margin: 0 10px">
       <div>
-        <el-avatar
-          class="content-box-avatar"
-          shape="circle"
-          :size="40"
-          :src="handleCampusUrl(contentObj.params.avatar)"
-        ></el-avatar>
+        <!-- 头像 -->
+        <el-avatar class="content-box-avatar" shape="circle" :size="40" :src="handleCampusUrl(contentObj.params.avatar)"></el-avatar>
       </div>
 
+      <!-- 评论输入框 -->
       <div class="woo-box-item-flex">
         <div>
           <div class="woo-box-item-flex" style="align-self: center">
             <el-input
               type="textarea"
               :autosize="{ minRows: 1.3, maxRows: 5 }"
-              placeholder="发布你的评论"
+              placeholder="围观不如写想法..."
               v-model="toCommentQuery.coContent"
               maxlength="100"
               show-word-limit
@@ -27,16 +25,12 @@
             </el-input>
           </div>
 
+          <!-- 发布评论按钮 -->
           <div style="margin-top: 10px">
             <div class="woo-box-flex woo-box-alignCenter">
               <div class="woo-box-item-flex" style="align-self: center"></div>
-              <el-button
-                type="primary"
-                round
-                :disabled="toCommentQuery.coContent.length <= 0"
-                @click="addComment()"
-              >
-                评论
+              <el-button type="primary" round :disabled="toCommentQuery.coContent.length <= 0" @click="addComment()">
+                发布评论
               </el-button>
             </div>
           </div>
@@ -44,62 +38,44 @@
       </div>
     </div>
 
+    <!-- 评论列表 -->
     <div class="comment-list">
-      <!-- 评论列表 -->
-      <div
-        class="comment-item"
-        v-for="(item, keys) in commentOneLevelList"
-        :key="keys"
-        style="margin-top: 20px"
-      >
+      <div class="comment-item" v-for="(item, keys) in commentOneLevelList" :key="keys" style="margin-top: 20px">
         <div class="woo-box-flex">
           <!-- 头像 -->
-          <el-avatar
-            shape="circle"
-            :size="40"
-            :src="handleCampusUrl(item.avatar)"
-          ></el-avatar>
+          <el-avatar shape="circle" :size="40" :src="handleCampusUrl(item.avatar)"></el-avatar>
           <!-- 昵称、评论内容、时间 -->
           <div class="woo-box-item-flex" style="margin: -2px 0 0 10px">
             <div>
               <span class="comment-nick"> {{ item.userNickName }}</span>
               <!-- 是否是作者 -->
-              <span
-                class="comment-item-tag"
-                v-if="item.userId == contentObj.userId"
-                style="background: rgb(254, 44, 85)"
-                ><span>作者</span>
+              <span class="comment-item-tag" v-if="item.userId == contentObj.userId" style="background: rgb(254, 44, 85)">
+                <span>楼主</span>
               </span>
             </div>
 
+            <!-- 评论内容 -->
             <div style="margin-top: 4px">
               {{ item.coContent }}
             </div>
 
-            <div
-              class="comment-info woo-box-flex woo-box-alignCenter woo-box-justifyBetween"
-            >
+            <!-- 发布时间和ip -->
+            <div class="comment-info woo-box-flex woo-box-alignCenter woo-box-justifyBetween">
               <div>
                 <span> {{ handelTimeFormat(item.createTime) }} </span>
                 <span>·{{ item.address }}</span>
               </div>
-              <!-- 删除 回复 -->
+
+              <!-- 操作键 -->
               <div class="woo-box-flex" style="margin-right: 20px">
-                <div
-                  class="comment-iconbed woo-box-flex woo-box-alignCenter woo-box-justifyCenter"
-                  @click="delOwnComment(item.commentId)"
-                >
-                  <svg-icon
-                    class="comment-tool-iconbed"
-                    v-if="item.userId == loginUserId"
-                    icon-class="delete"
-                  />
+                <!-- 删除 -->
+                <div class="comment-iconbed woo-box-flex woo-box-alignCenter woo-box-justifyCenter" @click="delOwnComment(item.commentId)">
+                  <!-- 删除图标 -->
+                  <svg-icon class="comment-tool-iconbed" v-if="item.userId == loginUserId" icon-class="delete"/>
                 </div>
                 <!-- 添加子评论 -->
-                <div
-                  class="comment-iconbed woo-box-flex woo-box-alignCenter woo-box-justifyCenter"
-                  @click="openCommentChild(item.commentId)"
-                >
+                <div class="comment-iconbed woo-box-flex woo-box-alignCenter woo-box-justifyCenter" @click="openCommentChild(item.commentId)">
+                  <!-- 添加子评论图标 -->
                   <svg-icon class="comment-tool-iconbed" icon-class="comment" />
                 </div>
               </div>
@@ -113,20 +89,13 @@
             <div class="comment-more-item">
               <!-- 作者评论内容 -->
               <div v-if="item.children !== undefined">
-                <CommentUser
-                  :commentObj="item.children[0]"
-                  :contentObj="contentObj"
-                  @co-success="commentSuccess"
-                ></CommentUser>
+                <!-- 引入子组件 -->
+                <CommentUser :commentObj="item.children[0]" :contentObj="contentObj" @co-success="commentSuccess"></CommentUser>
               </div>
             </div>
 
             <!-- 更多评论的数量 -->
-            <div
-              class="comment-more-item"
-              v-if="item.childrenCount > 0"
-              @click="showChildren(item)"
-            >
+            <div class="comment-more-item" v-if="item.childrenCount > 0" @click="showChildren(item)">
               <div style="color: #eb7350; text-align: left">
                 <span>共{{ item.childrenCount }}条回复</span>
               </div>
@@ -137,16 +106,11 @@
     </div>
     <!-- 查看全部回复 -->
     <div v-if="this.$route.name == 'index' && commentTotal != 0">
-      <div
-        class="woo-divider-main woo-divider-x"
-        style="margin: 7px 20px 0 20px"
-      >
+      <div class="woo-divider-main woo-divider-x" style="margin: 7px 20px 0 20px">
         <!---->
       </div>
       <nuxt-link :to="'/c/' + contentObj.contentId">
-        <div
-          class="woo-box-flex woo-box-alignCenter woo-box-justifyCenter CommentFeed_more"
-        >
+        <div class="woo-box-flex woo-box-alignCenter woo-box-justifyCenter CommentFeed_more">
           <div>查看全部{{ commentTotal }}条评论</div>
           <i class="woo-font woo-font--angleRight"></i>
         </div>

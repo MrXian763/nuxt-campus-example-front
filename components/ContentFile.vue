@@ -1,17 +1,14 @@
+<!-- 内容文件子组件 -->
 <template>
   <div class="ContentFile" id="fileWidth">
+    <!-- 图片 -->
     <div class="picture file-row" v-if="contentType == 1">
       <div class="picture_item" v-for="(item, key) in fileList" :key="key">
-        <el-image
-          :style="image.style"
-          :fit="image.fit"
-          :src="item"
-          :preview-src-list="fileList"
-        >
-        </el-image>
+        <el-image :style="image.style" :fit="image.fit" :src="item" :preview-src-list="fileList"></el-image>
       </div>
     </div>
 
+    <!-- 视频 -->
     <div v-if="contentType == 2">
       <video
         style="border-radius: 10px"
@@ -36,7 +33,7 @@
 <script>
 export default {
   name: "ContentFile",
-  props: ["fileUrls", "contentType"],
+  props: ["fileUrls", "contentType"], // 视频文件位置以及内容类型
   components: {},
   data() {
     //这里存放数据
@@ -55,8 +52,8 @@ export default {
   },
   //生命周期 - 创建完成（可以访问当前this实例）
   created() {
-    this.setFileStyle();
-    this.setFileUrls();
+    this.setFileStyle(); // 设置样式
+    this.setFileUrls(); // 处理 url
   },
   //生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {
@@ -73,7 +70,7 @@ export default {
         this.videoHeight =  "162px;";
       }
     },
-    //处理url
+    // 处理url
     setFileUrls() {
       this.fileList = this.fileUrls.map((item) => {
         if (item.trim().startsWith("http") == false) {
@@ -88,6 +85,7 @@ export default {
   },
 };
 </script>
+
 <style>
 .picture_item {
   display: inline;

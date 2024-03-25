@@ -15,7 +15,7 @@ module.exports = {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: '校园信息墙',
+    title: '高校学习交流网', // 网站标题名
     htmlAttrs: {
       lang: 'zh-CN'
     },
@@ -73,6 +73,6 @@ module.exports = {
         }
       })
     }
-    
+
   }
 }

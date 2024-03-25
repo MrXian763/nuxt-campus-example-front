@@ -1,3 +1,4 @@
+// 配置多环境
 module.exports = {
     dev: {
         DESCN:'开发环境',

@@ -1,23 +1,16 @@
+<!-- 主页面组件 -->
 <template>
   <div class="index-bg woo-box-flex">
-    <!-- 菜单 -->
-    <CampusMenu
-      class="hidden-xs-only"
-      v-if="categoryObj != null"
-      :categoryObj="categoryObj"
-      @handleCategory="selectCatrgory"
-    ></CampusMenu>
 
+    <!-- 菜单 子组件点击菜单触发 handleCategory 属性调用 selectCatrgory 方法 -->
+    <CampusMenu class="hidden-xs-only" v-if="categoryObj != null" :categoryObj="categoryObj" @handleCategory="selectCatrgory"></CampusMenu>
+    
     <div class="campus-main">
       <div class="woo-box-flex" :style="{ 'min-height': mainMinHeight + 'px' }">
         <!-- 消息盒子 -->
         <div class="content-t" v-loading="loading">
-          <Content
-            v-for="(item, key) in contentObj"
-            :key="key"
-            :contentObj="item"
-            :loveContentIds="loveContentIds"
-          ></Content>
+          <!-- 子组件，消息内容 -->
+          <Content v-for="(item, key) in contentObj" :key="key" :contentObj="item" :loveContentIds="loveContentIds"></Content>
           <!-- 分页 -->
           <div class="fenye" v-if="!loading">
             <el-pagination
@@ -32,7 +25,7 @@
             </el-pagination>
           </div>
         </div>
-        <!-- 侧边栏内容 -->
+        <!-- 侧边栏内容（热度榜） -->
         <CampusSide class="hidden-xs-only"></CampusSide>
       </div>
     </div>
@@ -77,7 +70,7 @@ export default {
 
   //创建的时候自动调用
   created() {
-    
+
     this.getAllCategorys();
     this.getContent(this.contentVo);
   },
@@ -133,6 +126,10 @@ export default {
   border-right: 1px solid rgba(255, 255, 255, 0.2);
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 10px;
+  color: #FFFFFF;
+  height: 100%;
+  width: 100%;
+  text-align: left;
 
   max-width: 1122px;
   margin: auto;
@@ -153,5 +150,8 @@ export default {
 }
 .content-t {
   margin: 20px 0 0 0;
+  height: 100%;
+  width: 100%;
+  color: #FFFFFF;
 }
 </style>

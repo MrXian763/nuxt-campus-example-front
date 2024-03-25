@@ -1,6 +1,4 @@
-
-
-
+<!--评论子组件-->
 <template>
   <div class="comment-child">
     <div style="margin: 15px 20px 0"><!----></div>
@@ -8,11 +6,9 @@
     <div class="comment-children">
       <!-- 评论列表 -->
 
-      <CommentUser
-        :commentObj="commentObj"
-        :contentObj="contentObj"
-        @co-success="commentSuccess"
-      ></CommentUser>
+      <!-- 引入子组件 -->
+      <CommentUser :commentObj="commentObj" :contentObj="contentObj" @co-success="commentSuccess"></CommentUser>
+
       <!-- 更多回复 -->
       <div class="comment-more-replies">
         <div class="comment-more-list">
@@ -20,11 +16,7 @@
             <!-- 作者评论内容 -->
             <div v-if="commentChildren != null">
               <div v-for="(item, keys) in commentChildren" :key="keys">
-                <CommentUser
-                  :commentObj="item"
-                  :contentObj="contentObj"
-                  @co-success="commentSuccess"
-                ></CommentUser>
+                <CommentUser :commentObj="item" :contentObj="contentObj" @co-success="commentSuccess"></CommentUser>
               </div>
             </div>
           </div>
@@ -114,6 +106,7 @@ export default {
   },
 };
 </script>
+
 <style>
 .comment-nick {
   font-weight: bolder;

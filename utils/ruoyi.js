@@ -1,8 +1,7 @@
 
-
 /**
  * 通用js方法封装处理
- * Copyright (c) 2019 ruoyi
+ * Copyright (c) 2024 xianzhiye
  */
 
 // 日期格式化
