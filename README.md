@@ -1,40 +1,169 @@
-<p align="center"><a href="https://oddfar.com/" target="_blank" rel="noopener noreferrer"><img width="180" src="https://note.oddfar.com/img/web.png" alt="logo"></a></p>
-
-<p align="center">
-  <a href="https://github.com/oddfar/nuxt_campus_example/stargazers"><img src="https://img.shields.io/github/stars/oddfar/nuxt_campus_example.svg"></a>
-	<a href="https://github.com/oddfar/nuxt_campus_example/blob/master/LICENSE"><img src="https://img.shields.io/github/license/mashape/apistatus.svg"></a>
-</p>
 
 
+<h2 align="center">大学生交流学习网</h2>
 
-<h2 align="center">nuxt_campus_example</h2>
 
-<p align="center">校园信息墙、表白墙、万能墙 </p>
-
-<p align="center">网页web端，基于nuxt </p>
 
 ## 项目介绍
 
-此项目使用 **Campus** 进行编写：<https://github.com/oddfar/campus>
+本项目是一个高校学生交流学习论坛
 
-> **Campus** 一款简单的后台管理系统，快速开发框架，适合大学生开发毕设，或其他小项目。
+> 新式的信息交流的平台，帮助学生及时查阅校内实时信息，在此平台去获取或者发布自己的供需信息，学生也可以体验到当今发展迅速的人工智能AI科技。
 
-本项目为编写的一个例子：校园信息墙、表白墙、万能墙
+Web 端使用 **Vue** + **ElementUi**。 后端使用  **SpringBoot** + **Mybatis-Plus**进行开发
 
-- 在线预览：暂无
+- 接入AI智能聊天机器人，用户能跟AI聊天
 
-- 项目文档：<https://oddfar.github.io/campus-doc/campus-example>
+- PC网页端完全响应式布局
 
-### 项目代码
+  支持电脑、平板、手机等所有主流设备
 
-|                | GitHub                                          |
-| -------------- | ----------------------------------------------- |
-| 后端           | <https://github.com/oddfar/campus-example>      |
-| nuxt web端     | <https://github.com/oddfar/nuxt_campus_example> |
-| uni-app 移动端 | <https://github.com/oddfar/uni-app_campus_web>  |
+  部分样式暂时建议PC访问，还没有进行完善更改、
 
-vue后台代码在后端项目中
+### 使用到的技术
+
+- 前端
+  - Vue
+  - ElementUI
+  - JavaScript
+  - HTML
+  - CSS
+- 后端
+  - Java
+  - Spring
+  - SpringMVC
+  - SpringBoot
+  - Mybatis
+  - Mybatis-Plus
+  - Redis缓存
+  - MySQL数据库
+
+
+
+## 项目代码
+
+|           | Gitee                                         |
+| --------- | --------------------------------------------- |
+| 后端      | <https://gitee.com/xianzhiyong763/jishe>      |
+| 用户web端 | <https://gitee.com/xianzhiyong763/jisheuser>  |
+| 管理web端 | <https://gitee.com/xianzhiyong763/jisheadmin> |
+
+
 
 ## 演示图
 
-请 [点击此处](https://oddfar.github.io/campus-doc/campus-example/#%E6%BC%94%E7%A4%BA%E5%9B%BE) 访问文档查看
+### 用户端
+
+**主页**
+
+![Snipaste_2024-03-25_20-06-02](imgs/Snipaste_2024-03-25_20-06-02.png)
+
+**AI问答**
+
+![Snipaste_2024-03-25_20-07-48](imgs/Snipaste_2024-03-25_20-07-48.png)
+
+**用户个人主页**
+
+![Snipaste_2024-03-25_20-10-18](imgs/Snipaste_2024-03-25_20-10-18.png)
+
+**用户文内容管理**
+
+![Snipaste_2024-03-25_20-10-58](imgs/Snipaste_2024-03-25_20-10-58.png)
+
+**用户发布内容**
+
+![Snipaste_2024-03-25_20-11-45](imgs/Snipaste_2024-03-25_20-11-45.png)
+
+**用户登录**
+
+![Snipaste_2024-03-25_20-12-43](imgs/Snipaste_2024-03-25_20-12-43.png)
+
+**用户注册**
+
+![Snipaste_2024-03-25_20-12-55](imgs/Snipaste_2024-03-25_20-12-55.png)
+
+**用户找回密码**
+
+![Snipaste_2024-03-25_20-13-06](imgs/Snipaste_2024-03-25_20-13-06.png)
+
+### 管理端
+
+**首页**
+
+![Snipaste_2024-03-26_15-13-47](imgs/Snipaste_2024-03-26_15-13-47.png)
+
+**登录**
+
+![Snipaste_2024-03-26_15-16-30](imgs/Snipaste_2024-03-26_15-16-30.png)
+
+**系统管理-用户管理**
+
+![Snipaste_2024-03-26_15-13-58](imgs/Snipaste_2024-03-26_15-13-58.png)
+
+**系统管理-角色管理**
+
+![Snipaste_2024-03-26_15-14-09](imgs/Snipaste_2024-03-26_15-14-09.png)
+
+**系统管理-菜单管理**
+
+![Snipaste_2024-03-26_15-14-30](imgs/Snipaste_2024-03-26_15-14-30.png)
+
+**系统管理-字典管理**
+
+![Snipaste_2024-03-26_15-14-40](imgs/Snipaste_2024-03-26_15-14-40.png)
+
+**系统管理-参数设置**
+
+![Snipaste_2024-03-26_15-14-48](imgs/Snipaste_2024-03-26_15-14-48.png)
+
+**系统管理-日志管理-操作日志**
+
+![Snipaste_2024-03-26_15-14-58](imgs/Snipaste_2024-03-26_15-14-58.png)
+
+**系统管理-日志管理-登录日志**
+
+![Snipaste_2024-03-26_15-15-08](imgs/Snipaste_2024-03-26_15-15-08.png)
+
+**学生论坛-内容管理**
+
+![Snipaste_2024-03-26_15-15-20](imgs/Snipaste_2024-03-26_15-15-20.png)
+
+**学生论坛-类别管理**
+
+![Snipaste_2024-03-26_15-15-36](imgs/Snipaste_2024-03-26_15-15-36.png)
+
+**学生论坛-标签管理**
+
+![Snipaste_2024-03-26_15-15-50](imgs/Snipaste_2024-03-26_15-15-50.png)
+
+**学生论坛-评论管理**
+
+![Snipaste_2024-03-26_15-16-00](imgs/Snipaste_2024-03-26_15-16-00.png)
+
+**个人中心**
+
+![Snipaste_2024-03-26_15-16-18](imgs/Snipaste_2024-03-26_15-16-18.png)
+
+
+
+## 运行项目
+
+### 用户端、管理端
+
+用户端进入到用户端的目录`nuxt_campus_example-master`，执行命令下载依赖，node使用的版本是16.16.0
+
+```
+npm install
+```
+
+启动项目
+
+```
+npm run dev
+```
+
+管理端进入到目录`vue_campus_admin`执行上面同样的操作即可
+
+### 后端
+
+进入Intellij IDEA 开发工具，将maven仓库地址和设置文件设置为自己的路径，在配置文件 MySQL 和 Redis 的账号密码内容设置为自己的，点击运行项目即可
