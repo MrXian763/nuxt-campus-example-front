@@ -73,9 +73,10 @@ export default {
     // 处理url
     setFileUrls() {
       this.fileList = this.fileUrls.map((item) => {
-        if (item.trim().startsWith("http") == false) {
-          return (item = this.host + item);
-        }
+        return item;
+        // if (item.trim().startsWith("http") == false) {
+        //   return (item = this.host + item);
+        // }
       });
       if (this.fileList.length > 1) {
         this.image.style = "border-radius: 10px; width: 25%;aspect-ratio:1/1";

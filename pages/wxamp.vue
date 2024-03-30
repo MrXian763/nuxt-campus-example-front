@@ -47,13 +47,13 @@ export default {
         this.$set(this.messages, this.messages.length, { text: '正在认真思考您的问题，请耐心等待。。。', isUser: false });
         // 发送请求
         const {answer} = await request({
-          url: 'http://localhost:8160/askAI',
+          url: 'http://8.134.251.111:8160/askAI',
           method: 'post',
           headers: {
             'Content-Type': 'application/json'
           },
           data: { question: this.messages[this.messages.length - 2].text },
-          timeout: 20000 // 设置超时时间为20秒
+          timeout: 60000 // 设置超时时间为60秒
         });
 
         // 将 AI 回复添加到消息列表中 this.messages: 要更新的目标对象或数组 this.messages.length: 要设置的属性或索引 { text: answer, isUser: false }: 新值

@@ -5,6 +5,10 @@ const path = require('path')
 
 module.exports = {
 
+  server: {
+    port: 3000,
+    host: '0.0.0.0'
+  },
   // 多环境配置
   env: {
     NUXT_ENV: env[process.env.NODE_ENV]

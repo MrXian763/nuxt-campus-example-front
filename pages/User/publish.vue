@@ -150,7 +150,7 @@ export default {
       this.$router.push({ path: "/userlogin" });
     }
     this.upload.headers["Authorization"] = "Bearer " + getToken();
-    this.haveMail();
+    // this.haveMail(); // 校验用户有没有绑定邮箱
   },
   mounted() {
     this.$nextTick(function () {

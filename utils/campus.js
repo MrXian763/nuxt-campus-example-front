@@ -1,7 +1,7 @@
 
 /**
  * 通用js方法封装处理
- * Copyright (c) 2023 致远（oddfar.com）
+ * Copyright (c) 2024 xianziye
  */
 
 import { parseTime } from "@/utils/ruoyi";
@@ -12,7 +12,6 @@ export function handleCampusUrl(avatar) {
   } else {
     return process.env.NUXT_ENV.API_BASE_URL + avatar;
   }
-
 }
 
 // 大致的计算时间差

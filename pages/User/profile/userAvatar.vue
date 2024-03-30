@@ -14,6 +14,7 @@
         @close="closeDialog"
       >
         <el-row>
+          <!-- 图片裁剪器 -->
           <el-col :xs="24" :md="12" :style="{ height: '350px' }">
             <client-only>
               <VueCropper
@@ -29,6 +30,7 @@
               />
             </client-only>
           </el-col>
+          <!-- 显示上传的头像预览 -->
           <el-col :xs="24" :md="12" :style="{ height: '350px' }">
             <div class="avatar-upload-preview">
               <img :src="previews.url" :style="previews.img" />
