@@ -2,11 +2,7 @@
   <div>
     <client-only>
       <div class="user-info-head" @click="editCropper()">
-        <img
-          v-bind:src="options.img"
-          title="点击上传头像"
-          class="img-circle img-lg"
-        />
+        <img v-bind:src="options.img" title="点击上传头像" class="img-circle img-lg"/>
       </div>
       <el-dialog
         v-if="open"
@@ -42,50 +38,27 @@
         <br />
         <el-row>
           <el-col :lg="2" :md="2">
-            <el-upload
-              action="#"
-              :http-request="requestUpload"
-              :show-file-list="false"
-              :before-upload="beforeUpload"
-            >
+            <el-upload action="#" :http-request="requestUpload" :show-file-list="false" :before-upload="beforeUpload">
               <el-button size="small">
-                选择
+                上传图片
                 <i class="el-icon-upload el-icon--right"></i>
               </el-button>
             </el-upload>
           </el-col>
           <el-col :lg="{ span: 1, offset: 2 }" :md="2">
-            <el-button
-              icon="el-icon-plus"
-              size="small"
-              @click="changeScale(1)"
-            ></el-button>
+            <el-button icon="el-icon-plus" size="small" @click="changeScale(1)"></el-button>
           </el-col>
           <el-col :lg="{ span: 1, offset: 1 }" :md="2">
-            <el-button
-              icon="el-icon-minus"
-              size="small"
-              @click="changeScale(-1)"
-            ></el-button>
+            <el-button icon="el-icon-minus" size="small" @click="changeScale(-1)"></el-button>
           </el-col>
           <el-col :lg="{ span: 1, offset: 1 }" :md="2">
-            <el-button
-              icon="el-icon-refresh-left"
-              size="small"
-              @click="rotateLeft()"
-            ></el-button>
+            <el-button icon="el-icon-refresh-left" size="small" @click="rotateLeft()"></el-button>
           </el-col>
           <el-col :lg="{ span: 1, offset: 1 }" :md="2">
-            <el-button
-              icon="el-icon-refresh-right"
-              size="small"
-              @click="rotateRight()"
-            ></el-button>
+            <el-button icon="el-icon-refresh-right" size="small" @click="rotateRight()"></el-button>
           </el-col>
           <el-col :lg="{ span: 2, offset: 6 }" :md="2">
-            <el-button type="primary" size="small" @click="uploadImg()"
-              >提 交</el-button
-            >
+            <el-button type="primary" size="small" @click="uploadImg()">修 改</el-button>
           </el-col>
         </el-row>
       </el-dialog>
@@ -173,11 +146,16 @@ export default {
     },
     // 上传图片
     uploadImg() {
+      // 调用了名为 cropper 的子组件的 getCropBlob 方法
       this.$refs.cropper.getCropBlob((data) => {
         let formData = new FormData();
+        // 向 FormData 对象中添加一个键值对，键为 avatarfile，值为裁剪后的头像图片二进制数据
         formData.append("avatarfile", data);
+
+        // 发送更换头像请求到后端
         userInfoApi.uploadAvatar(formData).then((response) => {
           this.open = false;
+          // 从服务器响应 response 中获取新上传的头像URL，并通过 handleCampusUrl 方法对其进行处理（如添加域名前缀等），然后将处理后的URL赋值给组件内部 options 对象的 img 属性
           this.options.img = this.handleCampusUrl(response.imgUrl);
           // store.commit('SET_AVATAR', this.options.img);
           this.$message.success("修改成功");   //调用Element库中的内置对象方法弹出成功的提示框
@@ -198,6 +176,7 @@ export default {
   },
 };
 </script>
+
 <style scoped>
 .user-info-head {
   position: relative;
