@@ -47,7 +47,7 @@ export default {
         this.$set(this.messages, this.messages.length, { text: '正在认真思考您的问题，请耐心等待。。。', isUser: false });
         // 发送请求
         const {answer} = await request({
-          url: 'http://8.134.251.111:8160/askAI',
+          url: 'http://159.75.109.161:8160/askAI',
           method: 'post',
           headers: {
             'Content-Type': 'application/json'
